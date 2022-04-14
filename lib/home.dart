@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
         title: Text('BMI Application'),
         centerTitle: true,
       ),
-      body: Column(
+      body: ListView(
         children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,30 +24,38 @@ class _HomeState extends State<Home> {
             Image.asset('assets/bmilogo.png'),
           ],
         ),
-        Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: '32',
-                label: Text('Age'),
-                icon: Icon(Icons.person)
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: '32',
+                  label: Text('Age'),
+                  prefixIcon: Icon(Icons.person)
+                ),
               ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: '5.4',
-                label: Text('Height in Feet'),
-                icon: Icon(Icons.table_chart)
+              SizedBox(height: 8.0,),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: '5.4',
+                  label: Text('Height in Feet'),
+                  prefixIcon: Icon(Icons.table_chart)
+                ),
               ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: '180',
-                label: Text('Weight In lb'),
-                icon: Icon(Icons.table_rows_outlined)
-              ),
-            )
-          ],
+              SizedBox(height: 8.0,),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: '180',
+                  label: Text('Weight In lb'),
+                  prefixIcon: Icon(Icons.table_rows_outlined)
+                ),
+              )
+            ],
+          ),
         )
       ],
       )
