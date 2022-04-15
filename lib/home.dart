@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
   const Home({ Key? key }) : super(key: key);
@@ -14,14 +13,20 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Application'),
+        backgroundColor: Colors.pinkAccent,
         centerTitle: true,
       ),
       body: ListView(
+        padding: EdgeInsets.all(2.0),
         children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/bmilogo.png'),
+            Image.asset(
+              'assets/bmilogo.png',
+              width: 95.0,
+            ),
+            
           ],
         ),
         Container(
@@ -36,10 +41,36 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 8.0,),
                 Weight(),
 
-                ElevatedButton(onPressed: () {}, child: Text('Calculate')),
+                ElevatedButton(
+                  onPressed: () {},
+                  
+                   child: Text(
+                     'Calculate',
+                     style: TextStyle(
+                       fontSize: 16.0,
+                     ),
+                   )
+                ),
               ],
             ),
           ),
+        ),
+        SizedBox(height: 20.0,),
+        Column(
+          children: [
+            Text('Your Bmi: 24.6', style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.blueAccent,
+              fontStyle: FontStyle.italic
+            ),),
+            SizedBox(height: 8.0),
+            Text('Overweight', style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.pinkAccent
+            ),),
+          ],
         )
       ],
       )
