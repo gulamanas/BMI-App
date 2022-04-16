@@ -13,14 +13,37 @@ class _HomeState extends State<Home> {
   final heightController = TextEditingController();
   final weightController = TextEditingController();
   double result = 0.0;
+  String health = "";
+  String resultedValue = "";
 
   void finalResult() {
     setState(() {
       int age = int.parse(ageController.text);
+      // height in feet
       double height = double.parse(heightController.text);
+      double heightInMeter = height / 3.28;
+
+      // weight in pounds(lbs)
       double weight = double.parse(weightController.text);
-      result = age + height + weight;
+      double weightInKg = weight * 0.45;
+
+      result = weightInKg / (heightInMeter * heightInMeter);
+
+      if (double.parse(result.toStringAsFixed(1)) < 18.5)  {
+        health = "Underweight";
+      }
+      else if (double.parse(result.toStringAsFixed(1)) > 18.5 && double.parse(result.toStringAsFixed(1)) < 24.9 ) {
+        health = "Normal";
+      }
+      else if (double.parse(result.toStringAsFixed(1)) > 24.9 && double.parse(result.toStringAsFixed(1)) < 29.9 ) {
+        health = "Overweight";
+      }
+      else {
+        health = "Obese";
+      }
+      // result.toStringAsFixed(1);
     });
+    resultedValue = "Your BMI is ${result.toStringAsFixed(1)}";
   }
   @override
   Widget build(BuildContext context) {
@@ -98,14 +121,14 @@ class _HomeState extends State<Home> {
         SizedBox(height: 20.0,),
         Column(
           children: [
-            Text('Your Bmi: $result', style: TextStyle(
+            Text('$resultedValue', style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w600,
               color: Colors.blueAccent,
               fontStyle: FontStyle.italic
             ),),
             SizedBox(height: 8.0),
-            Text('Overweight', style: TextStyle(
+            Text('$health', style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w600,
               color: Colors.pinkAccent
