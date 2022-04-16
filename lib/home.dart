@@ -117,14 +117,20 @@ class _HomeState extends State<Home> {
                   ),
                 ),
 
-                ElevatedButton(
-                  onPressed: finalResult,                  
-                   child: Text(
-                     'Calculate',
-                     style: TextStyle(
-                       fontSize: 16.0,
-                     ),
-                   )
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: ElevatedButton(
+                    onPressed: finalResult,     
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.pinkAccent)
+                    ),             
+                     child: Text(
+                       'Calculate',
+                       style: TextStyle(
+                         fontSize: 16.0,
+                       ),
+                     )
+                  ),
                 ),
               ],
             ),
