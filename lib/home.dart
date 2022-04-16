@@ -8,6 +8,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final ageController = TextEditingController();
+  final heightController = TextEditingController();
+  final weightController = TextEditingController();
+  double result = 0.0;
+
+  void finalResult() {
+    setState(() {
+      int age = int.parse(ageController.text);
+      double height = double.parse(heightController.text);
+      double weight = double.parse(weightController.text);
+      result = age + height + weight;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,40 +50,40 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 TextField(
-      controller: null,
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        hintText: 'E.g: 32',
-        label: Text('Age'),
-        prefixIcon: Icon(Icons.person)
-      ),
-    ),
+                  controller: ageController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'E.g: 32',
+                    label: Text('Age'),
+                    prefixIcon: Icon(Icons.person)
+                  ),
+                ),
                 SizedBox(height: 8.0,),
                 TextField(
-      controller: null,
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        hintText: 'E.g: 5.4',
-        label: Text('Height in Feet'),
-        prefixIcon: Icon(Icons.insert_chart)
-      ),
-    ),
+                  controller: heightController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'E.g: 5.4',
+                    label: Text('Height in Feet'),
+                    prefixIcon: Icon(Icons.insert_chart)
+                  ),
+                ),
                 SizedBox(height: 8.0,),
                 TextField(
-      controller: null,
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        hintText: 'E.g: 180',
-        label: Text('Weight In lb'),
-        prefixIcon: Icon(Icons.line_weight)
-      ),
-    ),
+                  controller: weightController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'E.g: 180',
+                    label: Text('Weight In lb'),
+                    prefixIcon: Icon(Icons.line_weight)
+                  ),
+                ),
 
                 ElevatedButton(
-                  onPressed: () {},                  
+                  onPressed: finalResult,                  
                    child: Text(
                      'Calculate',
                      style: TextStyle(
@@ -84,7 +98,7 @@ class _HomeState extends State<Home> {
         SizedBox(height: 20.0,),
         Column(
           children: [
-            Text('Your Bmi: 24.6', style: TextStyle(
+            Text('Your Bmi: $result', style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w600,
               color: Colors.blueAccent,
