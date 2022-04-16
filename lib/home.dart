@@ -19,29 +19,41 @@ class _HomeState extends State<Home> {
   void finalResult() {
     setState(() {
       int age = int.parse(ageController.text);
+
       // height in feet
       double height = double.parse(heightController.text);
-      double heightInMeter = height / 3.28;
+      double heightInInches = height * 12;
+      double heightInMeter = heightInInches / 39.4;
 
       // weight in pounds(lbs)
       double weight = double.parse(weightController.text);
       double weightInKg = weight * 0.45;
 
-      result = weightInKg / (heightInMeter * heightInMeter);
+      if ((ageController.text.isNotEmpty && age > 0)
+      && (heightController.text.isNotEmpty && height > 0)
+      && (weightController.text.isNotEmpty && weight > 0)) {
 
-      if (double.parse(result.toStringAsFixed(1)) < 18.5)  {
+        result = weightInKg / (heightInMeter * heightInMeter);
+
+        if (double.parse(result.toStringAsFixed(1)) < 18.5)  {
         health = "Underweight";
-      }
-      else if (double.parse(result.toStringAsFixed(1)) > 18.5 && double.parse(result.toStringAsFixed(1)) < 24.9 ) {
-        health = "Normal";
-      }
-      else if (double.parse(result.toStringAsFixed(1)) > 24.9 && double.parse(result.toStringAsFixed(1)) < 29.9 ) {
-        health = "Overweight";
+        }
+
+        else if (double.parse(result.toStringAsFixed(1)) >= 18.5 && double.parse(result.toStringAsFixed(1)) < 25 ) {
+          health = "Normal";
+        }
+
+        else if (double.parse(result.toStringAsFixed(1)) >= 25 && double.parse(result.toStringAsFixed(1)) < 29.9 ) {
+          health = "Overweight";
+        }
+
+        else {
+          health = "Obese";
+        }
       }
       else {
-        health = "Obese";
+        result = 0.0;
       }
-      // result.toStringAsFixed(1);
     });
     resultedValue = "Your BMI is ${result.toStringAsFixed(1)}";
   }
