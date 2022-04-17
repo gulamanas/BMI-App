@@ -91,7 +91,11 @@ class _HomeState extends State<Home> {
                     border: OutlineInputBorder(),
                     hintText: 'E.g: 32',
                     label: Text('Age'),
-                    prefixIcon: Icon(Icons.person)
+                    prefixIcon: Icon(Icons.person),
+                    suffixIcon: IconButton(
+                      onPressed: () => ageController.clear(),
+                       icon: Icon(Icons.clear)
+                    ),
                   ),
                 ),
                 SizedBox(height: 8.0,),
@@ -102,7 +106,11 @@ class _HomeState extends State<Home> {
                     border: OutlineInputBorder(),
                     hintText: 'E.g: 5.4',
                     label: Text('Height in Feet'),
-                    prefixIcon: Icon(Icons.insert_chart)
+                    prefixIcon: Icon(Icons.insert_chart),
+                    suffixIcon: IconButton(
+                      onPressed: () => heightController.clear(),
+                      icon: Icon(Icons.clear),
+                    )
                   ),
                 ),
                 SizedBox(height: 8.0,),
@@ -113,7 +121,11 @@ class _HomeState extends State<Home> {
                     border: OutlineInputBorder(),
                     hintText: 'E.g: 180',
                     label: Text('Weight In lb'),
-                    prefixIcon: Icon(Icons.line_weight)
+                    prefixIcon: Icon(Icons.line_weight),
+                    suffixIcon: IconButton(
+                      onPressed: () => weightController.clear(),
+                       icon: Icon(Icons.clear)
+                    )
                   ),
                 ),
 
